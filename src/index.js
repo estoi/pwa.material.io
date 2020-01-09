@@ -3,12 +3,20 @@ import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
+/**
+ * redux
+ */
 import { Provider } from 'react-redux';
 import store from './redux';
 
 import App from './App';
 
+
+/**
+ * style
+ */
 import 'normalize.css';
+import './resource/styles/reset.less';
 import './resource/styles/public.less';
 
 const render = (APP) => {

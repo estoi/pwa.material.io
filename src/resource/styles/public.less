@@ -1,3 +1,49 @@
 .root-app {
-    min-height: 100vh;
+    position: relative;
+    height: 100vh;
+    .ui-header-wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 44PX;
+    }
+    .ui-content-wrap {
+        position: fixed;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #f1f1f1;
+        &.has-header {
+            height: calc(100vh - 44PX);
+            top: 44PX;
+        }
+        &.has-nav-bar {
+            height: calc(100vh - 56PX);
+            bottom: 56PX;
+        }
+        &.has-all {
+            height: calc(100vh - 100PX);
+            top: 44PX;
+            bottom: 56PX;
+        }
+        .wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding-left: 0;
+            background: #f1f1f1;
+        }
+    }
+    .ui-nav-bar-wrap {
+        height: 56PX;/*no*/
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
 }
