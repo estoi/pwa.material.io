@@ -8,6 +8,8 @@ import store from './redux';
 
 import App from './App';
 
+import 'normalize.css';
+import './resource/styles/public.less';
 
 const render = (APP) => {
     ReactDOM.render(
