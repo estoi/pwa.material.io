@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { withRouter } from 'react-router-dom';
 import Home from '@material-ui/icons/Home';
 import AddCircle from '@material-ui/icons/AddCircle';
 import FavoriteSharp from '@material-ui/icons/FavoriteSharp';
@@ -28,10 +27,12 @@ export default class App extends Component {
                 icon: <PersonSharp />
             }
         ];
+
         return (
             <div className="root-app">
-                <Header></Header>
-                <Content hasNavBar></Content>
+                {/* <Header></Header> */}
+                <Content hasNavBar>
+                </Content>
                 <NavBar options={options}></NavBar>
             </div>
         );
