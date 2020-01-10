@@ -9,6 +9,8 @@ import { Header, Content, NavBar } from './components';
 export default class App extends Component {
 
     render() {
+        const { children } = this.props;
+
         const options = [
             {
                 label: '首页',
@@ -32,6 +34,7 @@ export default class App extends Component {
             <div className="root-app">
                 {/* <Header></Header> */}
                 <Content hasNavBar>
+                    {children}
                 </Content>
                 <NavBar options={options}></NavBar>
             </div>

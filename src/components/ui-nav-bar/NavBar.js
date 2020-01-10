@@ -1,26 +1,53 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-
+import HomeSharp from '@material-ui/icons/HomeSharp';
+import AddCircle from '@material-ui/icons/AddCircle';
+import PersonSharp from '@material-ui/icons/PersonSharp';
 
 export default class NavBar extends Component {
     static propTypes = {
-        options: PropTypes.array
     }
 
     static defaultProps = {
-        hasHeader: false,
-        hasNavBar: false,
-        options: []
     };
 
     state = {
-        value: 0
+        value: ''
+    }
+
+    componentDidMount() {
+        const { match: { url } } = this.props;
+        this.setState({
+            value: url
+        })
+    }
+
+    // 导航点击事件
+    barClick(path) {
+        const { history } = this.props;
+        history.push(path)
     }
 
     render() {
         const { value } = this.state;
-        const { options } = this.props;
+
+        const options = [
+            {
+                label: '首页',
+                icon: <HomeSharp />,
+                path: '/home'
+            },
+            {
+                label: '购买',
+                icon: <AddCircle />,
+                path: '/pay'
+            },
+            {
+                label: '个人中心',
+                icon: <PersonSharp />,
+                path: '/mine'
+            }
+        ];
         return (
             <div className="ui-nav-bar-wrap">
                 <BottomNavigation
@@ -28,13 +55,14 @@ export default class NavBar extends Component {
                     onChange={(event, newValue) => {
                         this.setState({value: newValue})
                     }}
-                    showLabels
                 >
                     {
                         options?
                         options.map((i, k) => {
                             return (
-                                <BottomNavigationAction key={k} showLabel={value === k} label={i.label} value={k} icon={i.icon? i.icon: null} />
+                                <BottomNavigationAction onClick={() => this.barClick(i.path)} key={k} showLabel={value === i.path} label={i.label} value={i.path} icon={i.icon? i.icon: null}>
+                                    
+                                </BottomNavigationAction>
                             );
                         })
                         :

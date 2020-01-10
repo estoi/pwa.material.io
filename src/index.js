@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter, Redirect, useHistory } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 /**
@@ -9,9 +9,6 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './redux';
 
-import App from './App';
-
-
 /**
  * style
  */
@@ -19,19 +16,23 @@ import 'normalize.css';
 import './resource/styles/reset.less';
 import './resource/styles/public.less';
 
-const render = (APP) => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <HashRouter>
-                <App />
-            </HashRouter>
-        </Provider>
-        ,
-        document.getElementById('root')
-    );
-}
 
-render(App);
+/**
+ * routers
+ */
+import routers from './router';
+
+ReactDOM.render(
+    <Provider store={store}>
+        <BrowserRouter useHistory={useHistory}>
+            {/* <Redirect path="/" to="/home" /> */}
+            {[...routers]}
+        </BrowserRouter>
+    </Provider>
+    ,
+    document.getElementById('root')
+);
+
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 
